@@ -20,6 +20,38 @@
 This is my personal configuration for [[http://buildbot.net/][buildbot]] that I use for personal CI,
 testing my own branches, and my own projects.
 
-* TODO How to set up
+* Files in this repository
 
-I need to fill this in first
+| File                | Use                                          |
+|---------------------+----------------------------------------------|
+| master.cfg          | Buildbot master configuration file           |
+| nginx_buildbot.conf | Nginx configuration for proxying to buildbot |
+
+* Buildbot installation
+
+#+BEGIN_SRC sh
+cd
+mkdir -p buildbot
+cd buildbot
+virtualenv --no-site-packages sandbox
+source sandbox/bin/activate
+pip install sqlalchemy==0.7.10
+pip install buildbot
+#+END_SRC
+
+Then, create the master and copy the config file
+
+#+BEGIN_SRC sh
+buildbot create-master master
+git clone https://github.com/dakrone/buildbot-cfg.git
+cp buildbot-cfg/master.cfg master/master.cfg
+#+END_SRC
+
+Don't forget to change the passwords in =master.cfg= to something better!
+
+Then, start 'er up!
+
+#+BEGIN_SRC sh
+buildbot start master
+tail -F master/twistd.log
+#+END_SRC
