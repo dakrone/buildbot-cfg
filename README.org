@@ -22,10 +22,11 @@ testing my own branches, and my own projects.
 
 * Files in this repository
 
-| File                | Use                                          |
-|---------------------+----------------------------------------------|
-| master.cfg          | Buildbot master configuration file           |
-| nginx_buildbot.conf | Nginx configuration for proxying to buildbot |
+| File                    | Use                                          |
+|-------------------------+----------------------------------------------|
+| master.cfg              | Buildbot master configuration file           |
+| nginx_buildbot.conf     | Nginx configuration for proxying to buildbot |
+| buildbot-master.service | Systemd service file for buildbot master     |
 
 * Buildbot installation
 

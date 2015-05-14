@@ -1,0 +1,14 @@
+[Unit]
+Description=BuildBot master service
+After=network.target
+
+[Service]
+User=buildbot
+Group=buildbot
+WorkingDirectory=/home/buildbot/buildbot
+Environment="VIRTUAL_ENV=/home/buildbot/buildbot/sandbox" "PATH=/home/buildbot/buildbot/sandbox/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin"
+ExecStart=/home/buildbot/buildbot/sandbox/bin/twistd \
+          --nodaemon --no_save --pidfile= --python=master/buildbot.tac
+
+[Install]
+WantedBy=multi-user.target
