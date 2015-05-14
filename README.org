@@ -56,3 +56,12 @@ Then, start 'er up!
 buildbot start master
 tail -F master/twistd.log
 #+END_SRC
+
+To install the systemd service
+
+#+BEGIN_SRC sh
+sudo cp buildbot-cfg/buildbot-master.service /etc/systemd/system/
+sudo systemctl enable buildbot-master.service
+sudo systemctl start buildbot-master.service
+sudo systemctl status buildbot-master.service
+#+END_SRC
